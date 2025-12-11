@@ -1,0 +1,48 @@
+# Full configuration for final submission
+model_name: "gpt2"
+output_dir: "outputs/full"
+
+data:
+  use_dummy_data: false
+  num_train_samples: null
+  num_val_samples: 1000
+  max_length: 512
+  cache_dir: ".cache"
+  analyze_data: true
+
+training:
+  num_epochs: 5
+  batch_size: 8
+  learning_rate: 1e-5
+  weight_decay: 0.01
+  save_every: 1
+  gradient_accumulation_steps: 2
+
+ppo:
+  learning_rate: 1e-6
+  batch_size: 4
+  ppo_epochs: 4
+  clip_ratio: 0.2
+  kl_coef: 0.1
+  entropy_coef: 0.01
+  max_gen_length: 128
+  temperature: 1.0
+  num_epochs: 5
+
+grpo:
+  learning_rate: 1e-6
+  group_size: 8
+  kl_coef: 0.1
+  max_gen_length: 128
+  temperature: 1.0
+  num_epochs: 5
+
+dpo:
+  learning_rate: 5e-7
+  batch_size: 8
+  beta: 0.1
+  num_epochs: 5
+
+evaluation:
+  num_samples: 200
+  use_gpt4_judge: true
