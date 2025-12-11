@@ -167,7 +167,7 @@ def main(config_path: str):
     # Optimizer
     optimizer = torch.optim.AdamW(
         model.parameters(),
-        lr=config['training']['learning_rate'],
+        lr=float(config['training']['learning_rate']),
         weight_decay=config['training'].get('weight_decay', 0.01)
     )
     
