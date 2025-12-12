@@ -18,7 +18,7 @@ import yaml
 OUTPUT_DIR = Path('output_samples')
 OUTPUT_DIR.mkdir(exist_ok=True)
 
-NUM_SAMPLES = 20
+NUM_SAMPLES = 100
 
 # Load config to get correct model name
 with open('outputs/full/reward_model/config.yaml') as f:

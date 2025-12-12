@@ -1,0 +1,1538 @@
+{
+  "ppo": {
+    "wins": 36,
+    "ties": 17,
+    "losses": 47,
+    "errors": 0,
+    "total": 100,
+    "win_rate": 36.0,
+    "tie_rate": 17.0,
+    "loss_rate": 47.0,
+    "judgments": [
+      {
+        "sample_id": 0,
+        "judgment": "tie",
+        "flipped": false
+      },
+      {
+        "sample_id": 1,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 2,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 3,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 4,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 5,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 6,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 7,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 8,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 9,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 10,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 11,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 12,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 13,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 14,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 15,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 16,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 17,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 18,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 19,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 20,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 21,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 22,
+        "judgment": "tie",
+        "flipped": false
+      },
+      {
+        "sample_id": 23,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 24,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 25,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 26,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 27,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 28,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 29,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 30,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 31,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 32,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 33,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 34,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 35,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 36,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 37,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 38,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 39,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 40,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 41,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 42,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 43,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 44,
+        "judgment": "tie",
+        "flipped": false
+      },
+      {
+        "sample_id": 45,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 46,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 47,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 48,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 49,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 50,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 51,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 52,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 53,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 54,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 55,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 56,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 57,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 58,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 59,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 60,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 61,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 62,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 63,
+        "judgment": "tie",
+        "flipped": false
+      },
+      {
+        "sample_id": 64,
+        "judgment": "tie",
+        "flipped": false
+      },
+      {
+        "sample_id": 65,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 66,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 67,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 68,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 69,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 70,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 71,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 72,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 73,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 74,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 75,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 76,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 77,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 78,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 79,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 80,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 81,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 82,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 83,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 84,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 85,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 86,
+        "judgment": "tie",
+        "flipped": false
+      },
+      {
+        "sample_id": 87,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 88,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 89,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 90,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 91,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 92,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 93,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 94,
+        "judgment": "tie",
+        "flipped": false
+      },
+      {
+        "sample_id": 95,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 96,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 97,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 98,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 99,
+        "judgment": "win",
+        "flipped": false
+      }
+    ]
+  },
+  "grpo": {
+    "wins": 50,
+    "ties": 19,
+    "losses": 31,
+    "errors": 0,
+    "total": 100,
+    "win_rate": 50.0,
+    "tie_rate": 19.0,
+    "loss_rate": 31.0,
+    "judgments": [
+      {
+        "sample_id": 0,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 1,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 2,
+        "judgment": "tie",
+        "flipped": false
+      },
+      {
+        "sample_id": 3,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 4,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 5,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 6,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 7,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 8,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 9,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 10,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 11,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 12,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 13,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 14,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 15,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 16,
+        "judgment": "tie",
+        "flipped": false
+      },
+      {
+        "sample_id": 17,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 18,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 19,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 20,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 21,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 22,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 23,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 24,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 25,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 26,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 27,
+        "judgment": "tie",
+        "flipped": false
+      },
+      {
+        "sample_id": 28,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 29,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 30,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 31,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 32,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 33,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 34,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 35,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 36,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 37,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 38,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 39,
+        "judgment": "tie",
+        "flipped": false
+      },
+      {
+        "sample_id": 40,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 41,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 42,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 43,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 44,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 45,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 46,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 47,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 48,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 49,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 50,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 51,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 52,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 53,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 54,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 55,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 56,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 57,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 58,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 59,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 60,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 61,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 62,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 63,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 64,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 65,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 66,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 67,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 68,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 69,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 70,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 71,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 72,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 73,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 74,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 75,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 76,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 77,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 78,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 79,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 80,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 81,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 82,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 83,
+        "judgment": "tie",
+        "flipped": false
+      },
+      {
+        "sample_id": 84,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 85,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 86,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 87,
+        "judgment": "tie",
+        "flipped": false
+      },
+      {
+        "sample_id": 88,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 89,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 90,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 91,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 92,
+        "judgment": "tie",
+        "flipped": false
+      },
+      {
+        "sample_id": 93,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 94,
+        "judgment": "tie",
+        "flipped": false
+      },
+      {
+        "sample_id": 95,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 96,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 97,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 98,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 99,
+        "judgment": "tie",
+        "flipped": false
+      }
+    ]
+  },
+  "dpo": {
+    "wins": 43,
+    "ties": 18,
+    "losses": 39,
+    "errors": 0,
+    "total": 100,
+    "win_rate": 43.0,
+    "tie_rate": 18.0,
+    "loss_rate": 39.0,
+    "judgments": [
+      {
+        "sample_id": 0,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 1,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 2,
+        "judgment": "tie",
+        "flipped": false
+      },
+      {
+        "sample_id": 3,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 4,
+        "judgment": "tie",
+        "flipped": false
+      },
+      {
+        "sample_id": 5,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 6,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 7,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 8,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 9,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 10,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 11,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 12,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 13,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 14,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 15,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 16,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 17,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 18,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 19,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 20,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 21,
+        "judgment": "tie",
+        "flipped": false
+      },
+      {
+        "sample_id": 22,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 23,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 24,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 25,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 26,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 27,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 28,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 29,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 30,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 31,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 32,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 33,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 34,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 35,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 36,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 37,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 38,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 39,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 40,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 41,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 42,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 43,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 44,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 45,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 46,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 47,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 48,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 49,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 50,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 51,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 52,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 53,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 54,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 55,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 56,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 57,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 58,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 59,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 60,
+        "judgment": "tie",
+        "flipped": false
+      },
+      {
+        "sample_id": 61,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 62,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 63,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 64,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 65,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 66,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 67,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 68,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 69,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 70,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 71,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 72,
+        "judgment": "tie",
+        "flipped": false
+      },
+      {
+        "sample_id": 73,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 74,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 75,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 76,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 77,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 78,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 79,
+        "judgment": "win",
+        "flipped": true
+      },
+      {
+        "sample_id": 80,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 81,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 82,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 83,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 84,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 85,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 86,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 87,
+        "judgment": "tie",
+        "flipped": true
+      },
+      {
+        "sample_id": 88,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 89,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 90,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 91,
+        "judgment": "tie",
+        "flipped": false
+      },
+      {
+        "sample_id": 92,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 93,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 94,
+        "judgment": "tie",
+        "flipped": false
+      },
+      {
+        "sample_id": 95,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 96,
+        "judgment": "loss",
+        "flipped": false
+      },
+      {
+        "sample_id": 97,
+        "judgment": "win",
+        "flipped": false
+      },
+      {
+        "sample_id": 98,
+        "judgment": "loss",
+        "flipped": true
+      },
+      {
+        "sample_id": 99,
+        "judgment": "tie",
+        "flipped": false
+      }
+    ]
+  }
+}

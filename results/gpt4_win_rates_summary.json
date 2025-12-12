@@ -1,0 +1,24 @@
+{
+  "model": "gpt-4o-mini",
+  "num_samples": 100,
+  "results": {
+    "ppo": {
+      "win_rate": 36.0,
+      "wins": 36,
+      "ties": 17,
+      "losses": 47
+    },
+    "grpo": {
+      "win_rate": 50.0,
+      "wins": 50,
+      "ties": 19,
+      "losses": 31
+    },
+    "dpo": {
+      "win_rate": 43.0,
+      "wins": 43,
+      "ties": 18,
+      "losses": 39
+    }
+  }
+}
