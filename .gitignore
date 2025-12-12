@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+
+# Outputs  
+outputs/
+*.pt
+*.pth
+
+# Cache
+.cache/
