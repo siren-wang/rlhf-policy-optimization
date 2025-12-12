@@ -1,9 +1,10 @@
 #!/bin/bash
 # Train PPO model
 
-CONFIG=${1:-configs/prototype.yaml}
+cd "$(dirname "$0")/.."
+export PYTHONPATH="$(pwd):$PYTHONPATH"
 
-export PYTHONPATH="${PYTHONPATH}:$(pwd)"
+CONFIG=${1:-configs/prototype.yaml}
 
 python -c "
 import yaml
