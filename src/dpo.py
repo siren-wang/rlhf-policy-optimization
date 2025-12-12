@@ -10,7 +10,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 import logging
 from tqdm import tqdm
 from pathlib import Path
-from data import PreferenceDataset
+from src.data import PreferenceDataset
 
 logger = logging.getLogger(__name__)
 

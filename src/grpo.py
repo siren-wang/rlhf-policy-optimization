@@ -11,8 +11,8 @@ from typing import List, Tuple
 import logging
 from tqdm import tqdm
 from pathlib import Path
-from reward_model import RewardModel
-from data import PromptDataset
+from src.reward_model import RewardModel
+from src.data import PromptDataset
 
 logger = logging.getLogger(__name__)
 

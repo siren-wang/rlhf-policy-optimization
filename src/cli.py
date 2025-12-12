@@ -1,8 +1,8 @@
 """Command-line interface for RLHF training."""
 import argparse
 import yaml
-from train_reward import main as train_reward_main
-from data import load_hh_rlhf_data, analyze_dataset, create_dummy_data
+from src.train_reward import main as train_reward_main
+from src.data import load_hh_rlhf_data, analyze_dataset, create_dummy_data
 from transformers import AutoTokenizer
 
 def main():

@@ -7,7 +7,7 @@ import numpy as np
 from pathlib import Path
 import json
 import logging
-from reward_model import RewardModel
+from src.reward_model import RewardModel
 
 logger = logging.getLogger(__name__)
 
