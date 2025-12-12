@@ -3,6 +3,8 @@
 
 CONFIG=${1:-configs/prototype.yaml}
 
+export PYTHONPATH="${PYTHONPATH}:$(pwd)"
+
 python -c "
 import yaml
 import torch
