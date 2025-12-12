@@ -216,13 +216,6 @@ beta: 0.1
 - The code will auto-download HH-RLHF from Hugging Face
 - Fallback: place your own JSONL file in `data/train.jsonl`
 
-## Testing
-
-Run unit tests:
-
-```bash
-pytest tests/ -v
-```
 
 ## Output Files
 
