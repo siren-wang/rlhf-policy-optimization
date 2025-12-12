@@ -167,7 +167,7 @@ class RewardModel(nn.Module):
     def load(cls, path: str, model_name: str = "gpt2") -> 'RewardModel':
         """Load model checkpoint."""
         logger.info(f"Loading reward model from {path}")
-        checkpoint = torch.load(path, map_location='cpu')
+        checkpoint = torch.load(path, map_location='cpu', weights_only=False)
         
         model = cls(model_name=model_name)
         model.load_state_dict(checkpoint['model_state_dict'])
