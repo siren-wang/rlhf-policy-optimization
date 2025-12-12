@@ -11,6 +11,7 @@ import torch.nn.functional as F
 from pathlib import Path
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from src.reward_model import RewardModel
+from src.data import load_hh_rlhf_data, create_dummy_data
 import yaml
 
 # Configuration
@@ -26,29 +27,47 @@ with open('outputs/full/reward_model/config.yaml') as f:
 
 print(f'Reward model trained with: {reward_model_name}')
 
-# Test prompts (diverse set)
-prompts = [
-    'Human: What is the capital of France?\n\nAssistant:',
-    'Human: How do I learn Python programming?\n\nAssistant:',
-    'Human: Explain quantum computing in simple terms.\n\nAssistant:',
-    'Human: What are the benefits of exercise?\n\nAssistant:',
-    'Human: How does photosynthesis work?\n\nAssistant:',
-    'Human: What is machine learning?\n\nAssistant:',
-    'Human: How can I improve my sleep quality?\n\nAssistant:',
-    'Human: What causes climate change?\n\nAssistant:',
-    'Human: Explain the theory of relativity.\n\nAssistant:',
-    'Human: How do vaccines work?\n\nAssistant:',
-    'Human: What is the water cycle?\n\nAssistant:',
-    'Human: How do computers process information?\n\nAssistant:',
-    'Human: What are the main causes of pollution?\n\nAssistant:',
-    'Human: How does the human immune system work?\n\nAssistant:',
-    'Human: What is artificial intelligence?\n\nAssistant:',
-    'Human: How do plants grow?\n\nAssistant:',
-    'Human: What is the greenhouse effect?\n\nAssistant:',
-    'Human: How does memory work in the brain?\n\nAssistant:',
-    'Human: What are renewable energy sources?\n\nAssistant:',
-    'Human: How do antibiotics work?\n\nAssistant:',
-][:NUM_SAMPLES]
+# Load training prompts to check for overlap
+print(f'\\nLoading training data to check for overlap...')
+try:
+    train_data = load_hh_rlhf_data('train', 10000)  # Load all training data
+    train_prompts = set(item['prompt'] for item in train_data)
+    print(f'✓ Loaded {len(train_prompts)} unique training prompts')
+except Exception as e:
+    print(f'⚠ Could not load training data: {e}')
+    train_prompts = set()
+
+# Load test prompts and filter out overlaps
+print(f'\\nLoading test prompts from HH-RLHF...')
+try:
+    # Load more than needed in case we need to filter
+    test_data = load_hh_rlhf_data('test', NUM_SAMPLES * 3)
+    
+    # Filter out any prompts that appear in training set
+    test_data_filtered = []
+    for item in test_data:
+        if item['prompt'] not in train_prompts:
+            test_data_filtered.append(item)
+        if len(test_data_filtered) >= NUM_SAMPLES:
+            break
+    
+    if train_prompts:
+        overlap_count = len(test_data) - len(test_data_filtered)
+        print(f'✓ Found {overlap_count} overlapping prompts (filtered out)')
+    
+    prompts = [item['prompt'] for item in test_data_filtered[:NUM_SAMPLES]]
+    print(f'✓ Using {len(prompts)} non-overlapping test prompts')
+    
+except Exception as e:
+    print(f'⚠ Could not load HH-RLHF data: {e}')
+    print('Using dummy data instead...')
+    test_data = create_dummy_data(NUM_SAMPLES)
+    prompts = [item['prompt'] for item in test_data]
+
+# Show first prompt as example
+print(f'\\nExample test prompt:')
+print(prompts[0][:200] + '...' if len(prompts[0]) > 200 else prompts[0])
+print()
 
 # Load tokenizer
 tokenizer = AutoTokenizer.from_pretrained(reward_model_name)
@@ -60,7 +79,7 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 print(f'Using device: {device}')
 
 # Load reward model
-print(f'\\nLoading reward model ({reward_model_name})...')
+print(f'Loading reward model ({reward_model_name})...')
 reward_model = RewardModel.load('outputs/full/reward_model/best_model.pt', reward_model_name)
 reward_model = reward_model.to(device)
 reward_model.eval()
@@ -94,7 +113,7 @@ for model_name, model_path in models.items():
         for i, prompt in enumerate(prompts):
             print(f'  {i+1}/{len(prompts)}', end='\\r')
             
-            tokens = tokenizer(prompt, return_tensors='pt').to(device)
+            tokens = tokenizer(prompt, return_tensors='pt', truncation=True, max_length=512).to(device)
             prompt_length = tokens['input_ids'].size(1)
             
             with torch.no_grad():
@@ -182,7 +201,7 @@ print(f'\\n✓ All samples saved to {combined_file}')
 md_file = OUTPUT_DIR / 'samples.md'
 with open(md_file, 'w') as f:
     f.write('# Generated Samples Comparison\\n\\n')
-    f.write(f'Generated {NUM_SAMPLES} samples from each model.\\n\\n')
+    f.write(f'Generated {NUM_SAMPLES} samples from HH-RLHF test set (non-overlapping with training).\\n\\n')
     
     # Summary statistics
     f.write('## Summary Statistics\\n\\n')
@@ -199,10 +218,12 @@ with open(md_file, 'w') as f:
             f.write(f'| {model_name.upper()} | {mean_r:.4f} | {std_r:.4f} | {mean_kl:.4f} | {std_kl:.4f} |\\n')
     f.write('\\n')
     
-    # Individual examples
-    for i, prompt in enumerate(prompts):
+    # Individual examples (first 5)
+    for i in range(min(5, len(prompts))):
         f.write(f'## Example {i+1}\\n\\n')
-        f.write(f'**Prompt:** {prompt}\\n\\n')
+        # Truncate long prompts
+        prompt_display = prompts[i][:300] + '...' if len(prompts[i]) > 300 else prompts[i]
+        f.write(f'**Prompt:** {prompt_display}\\n\\n')
         
         for model_name in ['reference', 'ppo', 'grpo', 'dpo']:
             if model_name in all_samples and i < len(all_samples[model_name]):
@@ -210,8 +231,10 @@ with open(md_file, 'w') as f:
                 response = sample['response']
                 reward = sample['reward']
                 kl = sample['kl']
+                # Truncate long responses
+                response_display = response[:300] + '...' if len(response) > 300 else response
                 f.write(f'### {model_name.upper()} (Reward: {reward:.4f}, KL: {kl:.4f})\\n')
-                f.write(f'{response}\\n\\n')
+                f.write(f'{response_display}\\n\\n')
         
         f.write('---\\n\\n')
 
@@ -220,9 +243,8 @@ print(f'\\n✓ Done! Generated samples with rewards and KL in output_samples/')
 
 # Print summary
 print('\\n' + '='*80)
-print('Performance Summary:')
+print('Performance Summary (HH-RLHF Test Set - No Train Overlap):')
 print('='*80)
-# Fixed the f-string syntax here
 header_model = 'Model'
 header_reward = 'Reward'
 header_kl = 'KL'
