@@ -29,15 +29,15 @@ class GRPOTrainer:
         for param in self.reward_model.parameters():
             param.requires_grad = False
         
-        self.group_size = config.get('group_size', 4)
-        self.kl_coef = config.get('kl_coef', 0.1)
-        self.max_gen_length = config.get('max_gen_length', 128)
-        self.temperature = config.get('temperature', 1.0)
-        
+        self.group_size = int(config.get('group_size', 4))
+        self.kl_coef = float(config.get('kl_coef', 0.1))
+        self.max_gen_length = int(config.get('max_gen_length', 128))
+        self.temperature = float(config.get('temperature', 1.0))
+
         self.optimizer = torch.optim.AdamW(
             self.policy_model.parameters(),
-            lr=config.get('learning_rate', 1e-6),
-            weight_decay=config.get('weight_decay', 0.01)
+            lr=float(config.get('learning_rate', 1e-6)),
+            weight_decay=float(config.get('weight_decay', 0.01))
         )
         logger.info(f"GRPO Trainer initialized with group_size={self.group_size}")
     

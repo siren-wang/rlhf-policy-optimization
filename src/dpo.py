@@ -24,11 +24,11 @@ class DPOTrainer:
         for param in self.reference_model.parameters():
             param.requires_grad = False
         
-        self.beta = config.get('beta', 0.1)
+        self.beta = float(config.get('beta', 0.1))
         self.optimizer = torch.optim.AdamW(
             self.policy_model.parameters(),
-            lr=config.get('learning_rate', 5e-7),
-            weight_decay=config.get('weight_decay', 0.01)
+            lr=float(config.get('learning_rate', 5e-7)),
+            weight_decay=float(config.get('weight_decay', 0.01))
         )
         logger.info(f"DPO Trainer initialized with beta={self.beta}")
     
