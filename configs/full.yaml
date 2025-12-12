@@ -4,19 +4,19 @@ output_dir: "outputs/full"
 
 data:
   use_dummy_data: false
-  num_train_samples: null
-  num_val_samples: 5000
+  num_train_samples: 5000
+  num_val_samples: 1000
   max_length: 512
   cache_dir: ".cache"
   analyze_data: true
 
 training:
   num_epochs: 5
-  batch_size: 2
+  batch_size: 4
   learning_rate: 1e-5
   weight_decay: 0.01
   save_every: 1
-  gradient_accumulation_steps: 4
+  gradient_accumulation_steps: 2
 
 ppo:
   learning_rate: 1e-6
@@ -39,7 +39,7 @@ grpo:
 
 dpo:
   learning_rate: 5e-7
-  batch_size: 2
+  batch_size: 4
   beta: 0.1
   num_epochs: 5
 
