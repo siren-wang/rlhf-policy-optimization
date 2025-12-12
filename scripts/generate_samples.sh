@@ -1,5 +1,5 @@
 #!/bin/bash
-# Generate sample outputs for analysis
+# Generate sample outputs with reward scores
 
 cd "$(dirname "$0")/.."
 export PYTHONPATH="$(pwd):$PYTHONPATH"
@@ -9,12 +9,21 @@ import json
 import torch
 from pathlib import Path
 from transformers import AutoModelForCausalLM, AutoTokenizer
+from src.reward_model import RewardModel
+import yaml
 
 # Configuration
 OUTPUT_DIR = Path('output_samples')
 OUTPUT_DIR.mkdir(exist_ok=True)
 
 NUM_SAMPLES = 20
+
+# Load config to get correct model name
+with open('outputs/full/reward_model/config.yaml') as f:
+    reward_config = yaml.safe_load(f)
+    reward_model_name = reward_config.get('model_name', 'gpt2')  # Default to gpt2
+
+print(f'Reward model trained with: {reward_model_name}')
 
 # Test prompts (diverse set)
 prompts = [
@@ -41,7 +50,7 @@ prompts = [
 ][:NUM_SAMPLES]
 
 # Load tokenizer
-tokenizer = AutoTokenizer.from_pretrained('distilgpt2')
+tokenizer = AutoTokenizer.from_pretrained(reward_model_name)
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token
 tokenizer.padding_side = 'left'
@@ -49,9 +58,16 @@ tokenizer.padding_side = 'left'
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 print(f'Using device: {device}')
 
+# Load reward model with correct architecture
+print(f'\\nLoading reward model ({reward_model_name})...')
+reward_model = RewardModel.load('outputs/full/reward_model/best_model.pt', reward_model_name)
+reward_model = reward_model.to(device)
+reward_model.eval()
+print('✓ Reward model loaded')
+
 # Models to evaluate
 models = {
-    'reference': 'distilgpt2',
+    'reference': reward_model_name,  # Use same as reward model
     'ppo': 'outputs/full/ppo_model/epoch_5',
     'grpo': 'outputs/full/grpo_model/epoch_5',
     'dpo': 'outputs/full/dpo_model/epoch_3',
@@ -60,7 +76,7 @@ models = {
 all_samples = {}
 
 for model_name, model_path in models.items():
-    print(f'\nGenerating samples from {model_name}...')
+    print(f'\\nGenerating samples from {model_name}...')
     
     try:
         model = AutoModelForCausalLM.from_pretrained(model_path).to(device)
@@ -69,11 +85,12 @@ for model_name, model_path in models.items():
         samples = []
         
         for i, prompt in enumerate(prompts):
-            print(f'  {i+1}/{len(prompts)}', end='\r')
+            print(f'  {i+1}/{len(prompts)}', end='\\r')
             
             tokens = tokenizer(prompt, return_tensors='pt').to(device)
             
             with torch.no_grad():
+                # Generate response
                 outputs = model.generate(
                     **tokens,
                     max_new_tokens=100,
@@ -84,6 +101,10 @@ for model_name, model_path in models.items():
                     pad_token_id=tokenizer.pad_token_id,
                     eos_token_id=tokenizer.eos_token_id,
                 )
+                
+                # Compute reward
+                full_mask = torch.ones_like(outputs)
+                reward = reward_model(outputs, full_mask)
             
             full_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
             response = full_text[len(prompt):].strip()
@@ -91,11 +112,13 @@ for model_name, model_path in models.items():
             samples.append({
                 'prompt': prompt,
                 'response': response,
-                'full_text': full_text
+                'full_text': full_text,
+                'reward': reward.item(),
             })
         
         all_samples[model_name] = samples
-        print(f'  ✓ Generated {len(samples)} samples')
+        mean_reward = sum(s['reward'] for s in samples) / len(samples)
+        print(f'  ✓ Generated {len(samples)} samples (mean reward: {mean_reward:.4f})')
         
         # Save individual model samples
         output_file = OUTPUT_DIR / f'{model_name}_samples.json'
@@ -111,26 +134,52 @@ for model_name, model_path in models.items():
 combined_file = OUTPUT_DIR / 'all_samples.json'
 with open(combined_file, 'w') as f:
     json.dump(all_samples, f, indent=2)
-print(f'\n✓ All samples saved to {combined_file}')
+print(f'\\n✓ All samples saved to {combined_file}')
 
-# Create human-readable markdown
+# Create human-readable markdown with rewards
 md_file = OUTPUT_DIR / 'samples.md'
 with open(md_file, 'w') as f:
-    f.write('# Generated Samples Comparison\n\n')
-    f.write(f'Generated {NUM_SAMPLES} samples from each model.\n\n')
+    f.write('# Generated Samples Comparison\\n\\n')
+    f.write(f'Generated {NUM_SAMPLES} samples from each model.\\n\\n')
     
+    # Summary statistics
+    f.write('## Summary Statistics\\n\\n')
+    f.write('| Model | Mean Reward | Std Dev |\\n')
+    f.write('|-------|-------------|---------|\\n')
+    for model_name in ['reference', 'ppo', 'grpo', 'dpo']:
+        if model_name in all_samples and all_samples[model_name]:
+            rewards = [s['reward'] for s in all_samples[model_name]]
+            mean_r = sum(rewards) / len(rewards)
+            std_r = (sum((r - mean_r)**2 for r in rewards) / len(rewards)) ** 0.5
+            f.write(f'| {model_name.upper()} | {mean_r:.4f} | {std_r:.4f} |\\n')
+    f.write('\\n')
+    
+    # Individual examples
     for i, prompt in enumerate(prompts):
-        f.write(f'## Example {i+1}\n\n')
-        f.write(f'**Prompt:** {prompt}\n\n')
+        f.write(f'## Example {i+1}\\n\\n')
+        f.write(f'**Prompt:** {prompt}\\n\\n')
         
         for model_name in ['reference', 'ppo', 'grpo', 'dpo']:
             if model_name in all_samples and i < len(all_samples[model_name]):
-                response = all_samples[model_name][i]['response']
-                f.write(f'### {model_name.upper()}\n')
-                f.write(f'{response}\n\n')
+                sample = all_samples[model_name][i]
+                response = sample['response']
+                reward = sample['reward']
+                f.write(f'### {model_name.upper()} (Reward: {reward:.4f})\\n')
+                f.write(f'{response}\\n\\n')
         
-        f.write('---\n\n')
+        f.write('---\\n\\n')
 
 print(f'✓ Human-readable samples saved to {md_file}')
-print(f'\n✓ Done! Generated samples in output_samples/')
+print(f'\\n✓ Done! Generated samples with rewards in output_samples/')
+
+# Print summary
+print('\\n' + '='*60)
+print('Reward Summary:')
+print('='*60)
+for model_name in ['reference', 'ppo', 'grpo', 'dpo']:
+    if model_name in all_samples and all_samples[model_name]:
+        rewards = [s['reward'] for s in all_samples[model_name]]
+        mean_r = sum(rewards) / len(rewards)
+        print(f'{model_name.upper():12s}: {mean_r:.4f}')
+print('='*60)
 "
