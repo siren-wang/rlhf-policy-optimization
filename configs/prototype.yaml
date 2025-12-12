@@ -12,14 +12,14 @@ data:
 
 training:
   num_epochs: 3
-  batch_size: 2
+  batch_size: 4
   learning_rate: 1e-5
   weight_decay: 0.01
   save_every: 1
 
 ppo:
   learning_rate: 1e-6
-  batch_size: 2
+  batch_size: 4
   ppo_epochs: 4
   clip_ratio: 0.2
   kl_coef: 0.1
@@ -38,7 +38,7 @@ grpo:
 
 dpo:
   learning_rate: 5e-7
-  batch_size: 2
+  batch_size: 4
   beta: 0.1
   num_epochs: 3
 
