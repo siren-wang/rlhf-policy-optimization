@@ -20,8 +20,6 @@ config = yaml.safe_load(open('$CONFIG'))
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 tokenizer = AutoTokenizer.from_pretrained(config['model_name'])
-if tokenizer.pad_token is None:
-    tokenizer.pad_token = tokenizer.eos_token
 
 policy_model = AutoModelForCausalLM.from_pretrained(config['model_name'])
 reference_model = AutoModelForCausalLM.from_pretrained(config['model_name'])
@@ -29,6 +27,14 @@ reward_model = RewardModel.load(
     Path(config['output_dir']) / 'reward_model' / 'best_model.pt',
     config['model_name']
 )
+
+if tokenizer.pad_token is None:
+    tokenizer.pad_token = tokenizer.eos_token
+    
+tokenizer.padding_side = 'left'
+
+policy_model.config.pad_token_id = tokenizer.pad_token_id
+reference_model.config.pad_token_id = tokenizer.pad_token_id
 
 if config['data'].get('use_dummy_data', False):
     data = create_dummy_data(config['data'].get('num_samples', 10))

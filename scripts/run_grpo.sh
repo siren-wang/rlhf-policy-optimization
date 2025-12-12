@@ -21,6 +21,7 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 tokenizer = AutoTokenizer.from_pretrained(config['model_name'])
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token
+tokenizer.padding_side = 'left'
 
 policy_model = AutoModelForCausalLM.from_pretrained(config['model_name'])
 reference_model = AutoModelForCausalLM.from_pretrained(config['model_name'])

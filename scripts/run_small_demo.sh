@@ -9,13 +9,13 @@ echo "========================================"
 
 mkdir -p outputs/demo/{checkpoints,logs,samples}
 
-echo ""
-echo "[1/4] Training reward model..."
-python src/train_reward.py --config configs/demo.yaml
+# echo ""
+# echo "[1/4] Training reward model..."
+# python src/train_reward.py --config configs/demo.yaml
 
-echo ""
-echo "[2/4] Training PPO model..."
-bash scripts/run_ppo.sh configs/demo.yaml
+# echo ""
+# echo "[2/4] Training PPO model..."
+# bash scripts/run_ppo.sh configs/demo.yaml
 
 echo ""
 echo "[3/4] Training GRPO model..."
